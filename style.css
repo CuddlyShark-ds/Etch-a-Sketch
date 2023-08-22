@@ -1,0 +1,10 @@
+.parentContainer{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 256px;
+}
+
+.gridSquare{
+    width: 16px;
+    height: 16px;
+}
