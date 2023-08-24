@@ -40,10 +40,11 @@ function buildColorSelectLayout(){
     blackInput.id = "black";
     blackInput.name = "colors";
     blackInput.value = "black";
+    blackInput.classList.add("inputStyle");
     colorSelectionContainer.appendChild(blackInput);
     blackLabel.for = "black";
     blackLabel.textContent = "Black";
-    blackLabel.classList.add("colorBlack");
+    blackLabel.classList.add("labelStyle");
     colorSelectionContainer.appendChild(blackLabel);
     colorSelectionContainer.appendChild(document.createElement("br"));
     // red Selection
@@ -52,10 +53,12 @@ function buildColorSelectLayout(){
     redInput.id = "red";
     redInput.name = "colors";
     redInput.value = "red";
+    redInput.classList.add("inputStyle");
     colorSelectionContainer.appendChild(redInput);
     redLabel.for = "red";
     redLabel.textContent = "Red";
-    redLabel.classList.add("colorRed");
+    redLabel.style.color = "red";
+    redLabel.classList.add("labelStyle");
     colorSelectionContainer.appendChild(redLabel);
     colorSelectionContainer.appendChild(document.createElement("br"));
     // green Selection
@@ -64,10 +67,12 @@ function buildColorSelectLayout(){
     greenInput.id = "green";
     greenInput.name = "colors";
     greenInput.value = "green";
+    greenInput.classList.add("inputStyle");
     colorSelectionContainer.appendChild(greenInput);
     greenLabel.for = "green";
     greenLabel.textContent = "Green";
-    greenLabel.classList.add("colorGreen");
+    greenLabel.style.color = "green";
+    greenLabel.classList.add("labelStyle");
     colorSelectionContainer.appendChild(greenLabel);
     colorSelectionContainer.appendChild(document.createElement("br"));
     // blue Selection
@@ -76,10 +81,12 @@ function buildColorSelectLayout(){
     blueInput.id = "blue";
     blueInput.name = "colors";
     blueInput.value = "blue";
+    blueInput.classList.add("inputStyle");
     colorSelectionContainer.appendChild(blueInput);
     blueLabel.for = "blue";
     blueLabel.textContent = "Blue";
-    blueLabel.classList.add("colorBlue");
+    blueLabel.style.color = "blue";
+    blueLabel.classList.add("labelStyle");
     colorSelectionContainer.appendChild(blueLabel);
     colorSelectionContainer.appendChild(document.createElement("br"));
 }
@@ -92,6 +99,8 @@ function buildGrid(){
     for(i = 0; i < 256; i++){
         let cloneSquare = square.cloneNode(true);
         cloneSquare.addEventListener("click", setColor);
+        cloneSquare.addEventListener("mouseover", mouseOver);
+        cloneSquare.addEventListener("mouseleave", mouseLeave);
         gridContainer.appendChild(cloneSquare);
     }
 }
@@ -102,15 +111,16 @@ function buildOptionsLayout(){
     eraseInput.id = "white";
     eraseInput.name = "colors";
     eraseInput.value = "white";
+    eraseInput.classList.add("inputStyle");
     optionsContainer.appendChild(eraseInput);
     eraseLabel.for = "white";
     eraseLabel.textContent = "Erase single";
-    eraseLabel.classList.add("erase");
+    eraseLabel.classList.add("labelStyle");
     optionsContainer.appendChild(eraseLabel);
     optionsContainer.appendChild(document.createElement("br"));
 
     eraseAllBtn.id = "eraseAllBtn";
-    eraseAllBtn.classList.add("eraseAll");
+    eraseAllBtn.classList.add("eraseAllBtn");
     eraseAllBtn.textContent = "erase all";
     eraseAllBtn.addEventListener('click', () => {
         resetGridColor();
@@ -119,22 +129,28 @@ function buildOptionsLayout(){
     optionsContainer.appendChild(eraseAllBtn);
 }
 
-function getColor(){    // <================================ working here. next, set selected color for use.
+function getColor(){
     selectedColor = this.value;
 }
 
 function setColor(){
     this.style.backgroundColor = selectedColor;
-    console.log(selectedColor);
 }
 
 function resetGridColor(){
-    selectedColor = "white";
     gridSquares = document.getElementsByClassName("gridSquare");
 
     for(let i = 0; i < gridSquares.length; i++){
-        gridSquares[i].style.backgroundColor = selectedColor;
+        gridSquares[i].style.backgroundColor = "white";
     }
+}
+
+function mouseOver(){
+    this.style.border = "1px solid black"
+}
+
+function mouseLeave(){
+    this.style.border = "none";
 }
 
 buildPageLayout();

@@ -9,16 +9,34 @@ body{
 }
 
 .colorSelectContainer{
-    padding: 10px;
+    padding: 0px 10px;
 }
 
 .gridContainer{
     display: flex;
     flex-wrap: wrap;
     max-width: 256px;
+    border: 1px solid black;
+    margin: 0px 10px;
 }
 
 .gridSquare{
+    box-sizing: border-box;
     width: 16px;
     height: 16px;
+}
+
+.inputStyle{
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.labelStyle{
+    margin-bottom: 10px;
+}
+
+.eraseAllBtn{
+    display: block;
+    width: 100%;
+    margin-top: 15px;
 }
