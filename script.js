@@ -20,7 +20,7 @@ const eraseInput = document.createElement("input");
 const eraseLabel = document.createElement("label");
 const eraseAllBtn = document.createElement("button");
 
-
+let selectedColor = "white";
 
 function buildPageLayout(){
     document.body.insertBefore(titleContainer, parentContainer);
@@ -36,6 +36,7 @@ function buildColorSelectLayout(){
     colorSelectionContainer.classList.add("colorSelectContainer");
     // black selection
     blackInput.type = "radio";
+    blackInput.addEventListener('change', getColor);
     blackInput.id = "black";
     blackInput.name = "colors";
     blackInput.value = "black";
@@ -47,6 +48,7 @@ function buildColorSelectLayout(){
     colorSelectionContainer.appendChild(document.createElement("br"));
     // red Selection
     redInput.type = "radio";
+    redInput.addEventListener('change', getColor);
     redInput.id = "red";
     redInput.name = "colors";
     redInput.value = "red";
@@ -58,6 +60,7 @@ function buildColorSelectLayout(){
     colorSelectionContainer.appendChild(document.createElement("br"));
     // green Selection
     greenInput.type = "radio";
+    greenInput.addEventListener('change', getColor);
     greenInput.id = "green";
     greenInput.name = "colors";
     greenInput.value = "green";
@@ -69,6 +72,7 @@ function buildColorSelectLayout(){
     colorSelectionContainer.appendChild(document.createElement("br"));
     // blue Selection
     blueInput.type = "radio";
+    blueInput.addEventListener('change', getColor);
     blueInput.id = "blue";
     blueInput.name = "colors";
     blueInput.value = "blue";
@@ -87,13 +91,14 @@ function buildGrid(){
 
     for(i = 0; i < 256; i++){
         let cloneSquare = square.cloneNode(true);
-        //cloneSquare.addEventListener("click", changeNodeColor);
+        cloneSquare.addEventListener("click", setColor);
         gridContainer.appendChild(cloneSquare);
     }
 }
 
 function buildOptionsLayout(){
     eraseInput.type = "radio";
+    eraseInput.addEventListener('change', getColor);
     eraseInput.id = "white";
     eraseInput.name = "colors";
     eraseInput.value = "white";
@@ -108,10 +113,28 @@ function buildOptionsLayout(){
     eraseAllBtn.classList.add("eraseAll");
     eraseAllBtn.textContent = "erase all";
     eraseAllBtn.addEventListener('click', () => {
+        resetGridColor();
         console.log("All Gone!!!");
     });
     optionsContainer.appendChild(eraseAllBtn);
-    
+}
+
+function getColor(){    // <================================ working here. next, set selected color for use.
+    selectedColor = this.value;
+}
+
+function setColor(){
+    this.style.backgroundColor = selectedColor;
+    console.log(selectedColor);
+}
+
+function resetGridColor(){
+    selectedColor = "white";
+    gridSquares = document.getElementsByClassName("gridSquare");
+
+    for(let i = 0; i < gridSquares.length; i++){
+        gridSquares[i].style.backgroundColor = selectedColor;
+    }
 }
 
 buildPageLayout();
