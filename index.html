@@ -8,11 +8,12 @@
 </head>
 <body>
     <h1>Etch-a-Sketch</h1>
-    <div class="grid-size">
+    <div class="grid-size-container">
         <label for="quantity">Select a grid size between 10 and 100</label>
         <input type="number" name="quantity" id="quantity" min="10" max="100">
         <button onclick="onClick(this)">Select Size</button>
     </div>
+    <p>Select a color clicking on it</p>
     <div class="colors-container">
         <div id="red" class="box red" onclick="onClick(this.id)"></div>
         <div id="green" class="box green" onclick="onClick(this.id)"></div>
