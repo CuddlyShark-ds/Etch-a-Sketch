@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Etch-a-Sketch</title>
+</head>
+<body>
+    <h1>Etch-a-Sketch</h1>
+    <div class="grid-size">
+        <label for="quantity">Select a grid size between 10 and 100</label>
+        <input type="number" name="quantity" id="quantity" min="10" max="100">
+        <button onclick="onClick(this)">Select Size</button>
+    </div>
+    <div class="colors-container">
+        <div id="red" class="box red" onclick="onClick(this.id)"></div>
+        <div id="green" class="box green" onclick="onClick(this.id)"></div>
+        <div id="blue" class="box blue" onclick="onClick(this.id)"></div>
+    </div>
+    <div class="container"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
