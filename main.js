@@ -17,6 +17,7 @@ function setGrid(){
         for(j = 0; j < size; j++){
             let box = document.createElement("div");
             box.classList.add("grid-box");
+            box.setAttribute("onmouseover", "setBackgroundColor(this)")
             let row = document.getElementById("row-" + i.toString());
             row.appendChild(box);
         }
@@ -34,7 +35,27 @@ function resetGrid(){
     }
 }
 
+let squareColor = "white";
+
 function setColor(color){
+    switch(color){
+        case "red":
+            squareColor = color;
+            break;
+        case "green":
+            squareColor = color;
+            break;
+        case "blue":
+            squareColor = color;
+            break;
+        default:
+            break;
+    }
+}
+
+function setBackgroundColor(square){
+    square.style.backgroundColor = squareColor;
+    console.log(square)
 }
 
 main()
