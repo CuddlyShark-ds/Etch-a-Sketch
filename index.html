@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
     <title>Etch-a-Sketch</title>
 </head>
 <body>
     <h1>Etch-a-Sketch</h1>
     <div class="grid-size-container">
-        <label for="quantity">Select a grid size between 10 and 100</label>
-        <input type="number" name="quantity" id="quantity" min="10" max="100">
-        <button onclick="onClick(this)">Select Size</button>
+        <label  for="quantity">Select a grid size between 10 and 100</label>
+        <input type="number" name="quantity" id="quantity" min="10" max="100" value="10">
+        <button onclick="setGrid(this)">Select Size</button>
     </div>
     <p>Select a color clicking on it</p>
     <div class="colors-container">
-        <div id="red" class="box red" onclick="onClick(this.id)"></div>
-        <div id="green" class="box green" onclick="onClick(this.id)"></div>
-        <div id="blue" class="box blue" onclick="onClick(this.id)"></div>
+        <div id="red" class="box red" onclick="setColor(this.id)"></div>
+        <div id="green" class="box green" onclick="setColor(this.id)"></div>
+        <div id="blue" class="box blue" onclick="setColor(this.id)"></div>
     </div>
-    <div class="container"></div>
+    <div id="grid-container" class="container"></div>
 
-    <script src="main.js"></script>
+    
 </body>
 </html>
