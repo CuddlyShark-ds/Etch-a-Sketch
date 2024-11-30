@@ -51,6 +51,10 @@ p {
     border-radius: 3px;
 }
 
+.active {
+    border: 2px whitesmoke solid;
+}
+
 .red {
     background-color: red;
 }

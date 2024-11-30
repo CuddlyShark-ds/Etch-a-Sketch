@@ -51,11 +51,36 @@ function setColor(color){
         default:
             break;
     }
+    setButtonActiveBorder(color);
+}
+
+function setButtonActiveBorder(color){
+    let boxList = document.getElementsByClassName("box");
+    let redBox = document.getElementById("red");
+    let greenBox = document.getElementById("green");
+    let blueBox = document.getElementById("blue");
+
+    for(i = 0; i < boxList.length; i++){
+        if(color == "red"){
+            redBox.classList.add("active");
+            greenBox.classList.remove("active");
+            blueBox.classList.remove("active");
+        }
+        else if(color == "green"){
+            redBox.classList.remove("active");
+            greenBox.classList.add("active");
+            blueBox.classList.remove("active");
+        }
+        else if(color == "blue"){
+            redBox.classList.remove("active");
+            greenBox.classList.remove("active");
+            blueBox.classList.add("active");
+        }
+    }
 }
 
 function setBackgroundColor(square){
     square.style.backgroundColor = squareColor;
-    console.log(square)
 }
 
 main()
